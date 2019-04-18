@@ -40,13 +40,13 @@ router.post('/', function(req, res) {
         }
         // res.json({ fulfillmentText: output});
         res.json({
-                "fulfillmentText": output,
+                // "fulfillmentText": output,
                 "fulfillmentMessages": [
                   {
                     "card": {
-                      "title": "card title",
+                      "title": output,
                       "subtitle": "card text",
-                      "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+                      "imageUri": data.sprites.front_default,
                       "buttons": [
                         {
                           "text": "button text",
