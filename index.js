@@ -38,17 +38,16 @@ router.post('/', function(req, res) {
       } else {
         output = "There is no Pokemon with the name "+pokemon+". Check your damn Pokedex!";
         }
-        // res.json({ fulfillmentText: output});
         res.json({
-                // "fulfillmentText": output,
-                // "fulfillmentMessages": [
-                //   {
-                //     "card": {
-                //       "title": output,
-                //       "imageUri": data.sprites.front_default
-                //     }
-                //   }
-                // ],
+                "fulfillmentText": output,
+                "fulfillmentMessages": [
+                  {
+                    "card": {
+                      "title": output,
+                      "imageUri": data.sprites.front_default
+                    }
+                  }
+                ],
                 "payload": {
                     "google": {
                       "expectUserResponse": true,
