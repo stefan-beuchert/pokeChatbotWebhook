@@ -58,6 +58,7 @@ router.post('/', function(req, res) {
                                 "formattedText": output,
                                 "image": {
                                     "url": data.sprites.front_default,
+                                    "accessibilityText": "Image alternate text"
                                 }
                                 }
                             }
