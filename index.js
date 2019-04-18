@@ -38,21 +38,12 @@ router.post('/', function(req, res) {
       } else {
         output = "There is no Pokemon with the name "+pokemon+". Check your damn Pokedex!";
         }
-        // res.json({ fulfillmentText: output});
         res.json({
-                // "fulfillmentText": output,
                 "fulfillmentMessages": [
                   {
                     "card": {
                       "title": output,
-                      "subtitle": "card text",
-                      "imageUri": data.sprites.front_default,
-                      "buttons": [
-                        {
-                          "text": "button text",
-                          "postback": "https://assistant.google.com/"
-                        }
-                      ]
+                      "imageUri": data.sprites.front_default
                     }
                   }
                 ],
@@ -62,18 +53,11 @@ router.post('/', function(req, res) {
                       "richResponse": {
                         "items": [
                             {
-                                "simpleResponse": {
-                                "textToSpeech": output
-                                }
-                            },
-                            {
                                 "basicCard": {
-                                "title": "Title: this is a title",
-                                "subtitle": "This is a subtitle",
-                                "formattedText": "This is a basic card.  Text in a basic card can include \"quotes\" and\n        most other unicode characters including emoji 📱.  Basic cards also support\n        some markdown formatting like *emphasis* or _italics_, **strong** or\n        __bold__, and ***bold itallic*** or ___strong emphasis___ as well as other\n        things like line  \nbreaks",
+                                "title": pokemon,
+                                "formattedText": output,
                                 "image": {
                                     "url": data.sprites.front_default,
-                                    "accessibilityText": "Image alternate text"
                                 }
                                 }
                             }
