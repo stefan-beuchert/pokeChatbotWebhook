@@ -40,40 +40,39 @@ router.post('/', function(req, res) {
         }
         // res.json({ fulfillmentText: output});
         res.json({
-                "payload": {
-                  "google": {
-                    "expectUserResponse": true,
-                    "richResponse": {
-                      "items": [
+                "fulfillmentText": output,
+                "fulfillmentMessages": [
+                  {
+                    "card": {
+                      "title": "card title",
+                      "subtitle": "card text",
+                      "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+                      "buttons": [
                         {
-                          "simpleResponse": {
-                            "textToSpeech": "This is a basic card example."
-                          }
-                        },
-                        {
-                          "basicCard": {
-                            "title": "Title: this is a title",
-                            "subtitle": "This is a subtitle",
-                            "formattedText": output,
-                            "image": {
-                              "url": "https://example.com/image.png",
-                              "accessibilityText": "Image alternate text"
-                            },
-                            "buttons": [
-                              {
-                                "title": "This is a button",
-                                "openUrlAction": {
-                                  "url": "https://assistant.google.com/"
-                                }
-                              }
-                            ],
-                            "imageDisplayOptions": "CROPPED"
-                          }
+                          "text": "button text",
+                          "postback": "https://assistant.google.com/"
                         }
                       ]
                     }
                   }
-                }
+                ],
+                "source": "example.com",
+                "outputContexts": [
+                  {
+                    "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
+                    "lifespanCount": 5,
+                    "parameters": {
+                      "param": "param value"
+                    }
+                  }
+                ],
+                "followupEventInput": {
+                  "name": "event name",
+                  "languageCode": "en-US",
+                  "parameters": {
+                    "param": "param value"
+                  }
+                }     
         })
     }
     request.send()
