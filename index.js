@@ -55,7 +55,21 @@ router.post('/', function(req, res) {
                       ]
                     }
                   }
-                ]
+                ],
+                "payload": {
+                    "google": {
+                      "expectUserResponse": true,
+                      "richResponse": {
+                        "items": [
+                          {
+                            "simpleResponse": {
+                              "textToSpeech": "this is a simple response"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                }
         })
     }
     request.send()
