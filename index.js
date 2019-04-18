@@ -41,14 +41,14 @@ router.post('/', function(req, res) {
         // res.json({ fulfillmentText: output});
         res.json({
                 // "fulfillmentText": output,
-                "fulfillmentMessages": [
-                  {
-                    "card": {
-                      "title": output,
-                      "imageUri": data.sprites.front_default
-                    }
-                  }
-                ],
+                // "fulfillmentMessages": [
+                //   {
+                //     "card": {
+                //       "title": output,
+                //       "imageUri": data.sprites.front_default
+                //     }
+                //   }
+                // ],
                 "payload": {
                     "google": {
                       "expectUserResponse": true,
@@ -62,9 +62,10 @@ router.post('/', function(req, res) {
                             {
                                 "basicCard": {
                                 "title": pokemon,
-                                "formattedText": output,
+                                "formattedText": "Picture of a "+pokemon,
                                 "image": {
                                     "url": data.sprites.front_default,
+                                    "accessibilityText": "Pokemon Image"
                                 }
                                 }
                             }
