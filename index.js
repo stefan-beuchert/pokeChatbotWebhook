@@ -38,7 +38,9 @@ router.post('/', function(req, res) {
       } else {
         output = "There is no Pokemon with the name "+pokemon+". Check your damn Pokedex!";
         }
+        // res.json({ fulfillmentText: output});
         res.json({
+                // "fulfillmentText": output,
                 "fulfillmentMessages": [
                   {
                     "card": {
@@ -53,13 +55,16 @@ router.post('/', function(req, res) {
                       "richResponse": {
                         "items": [
                             {
+                                "simpleResponse": {
+                                "textToSpeech": output
+                                }
+                            },
+                            {
                                 "basicCard": {
                                 "title": pokemon,
-                                "subtitle": "This is a subtitle",
                                 "formattedText": output,
                                 "image": {
                                     "url": data.sprites.front_default,
-                                    "accessibilityText": "Image alternate text"
                                 }
                                 }
                             }
