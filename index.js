@@ -55,24 +55,7 @@ router.post('/', function(req, res) {
                       ]
                     }
                   }
-                ],
-                "source": "example.com",
-                "outputContexts": [
-                  {
-                    "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
-                    "lifespanCount": 5,
-                    "parameters": {
-                      "param": "param value"
-                    }
-                  }
-                ],
-                "followupEventInput": {
-                  "name": "event name",
-                  "languageCode": "en-US",
-                  "parameters": {
-                    "param": "param value"
-                  }
-                }     
+                ]
         })
     }
     request.send()
