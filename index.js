@@ -12,6 +12,10 @@ router.get('/', function(req, res) {
     res.json({ fulfillmentText: 'hooray! welcome to our api!' });
 });
 
+router.post('/', function(req, res) {
+    res.json({ fulfillmentText: 'hooray! welcome to our api! -->POST' });
+});
+
 app.use('/api', router);
 
 // START THE SERVER
