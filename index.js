@@ -55,6 +55,7 @@ router.post('/', function(req, res) {
                             {
                                 "basicCard": {
                                 "title": pokemon,
+                                "subtitle": "This is a subtitle",
                                 "formattedText": output,
                                 "image": {
                                     "url": data.sprites.front_default,
