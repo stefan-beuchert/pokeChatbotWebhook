@@ -1,7 +1,14 @@
 var express    = require('express');   
 var bodyParser = require('body-parser');
-
+const basicAuth = require('express-basic-auth');
 var app        = express();
+
+app.use(basicAuth({
+    users: { 
+        admin: 'chatbots_ss19',
+    },
+    challenge: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
