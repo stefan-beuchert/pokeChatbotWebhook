@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 const basicAuth = require('express-basic-auth');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-var image = '~/resources/oak_talking.gif';
+var image = "~/resources/oak_talking.gif";
 
 var app        = express();
 
