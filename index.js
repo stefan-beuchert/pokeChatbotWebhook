@@ -3,10 +3,6 @@ var bodyParser = require('body-parser');
 const basicAuth = require('express-basic-auth');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-import { image } from '~/resources/oak_talking.gif';
-
-//var image = "~/resources/oak_talking.gif";
-
 var app        = express();
 
 app.use(basicAuth({
@@ -48,8 +44,7 @@ router.post('/', function(req, res) {
                   {
                     "card": {
                       "title": output,
-                      //"imageUri": data.sprites.front_default
-                      "imageUri": image
+                      "imageUri": data.sprites.front_default
                     }
                   }
                 ],
@@ -68,8 +63,7 @@ router.post('/', function(req, res) {
                                 "title": pokemon,
                                 "formattedText": "Picture of a "+pokemon,
                                 "image": {
-                                    //"url": data.sprites.front_default,
-                                    "url": image,
+                                    "url": data.sprites.front_default,
                                     "accessibilityText": "Pokemon Image"
                                 }
                                 }
