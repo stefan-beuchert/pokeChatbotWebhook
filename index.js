@@ -28,6 +28,7 @@ router.post('/', function(req, res) {
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(this.responseText)
+        var image = data.sprites.front_default;
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
         switch(intent){
@@ -44,7 +45,7 @@ router.post('/', function(req, res) {
                   {
                     "card": {
                       "title": output,
-                      "imageUri": data.sprites.front_default
+                      "imageUri": image
                     }
                   }
                 ],
@@ -63,7 +64,7 @@ router.post('/', function(req, res) {
                                 "title": pokemon,
                                 "formattedText": "Picture of a "+pokemon,
                                 "image": {
-                                    "url": data.sprites.front_default,
+                                    "url": image,
                                     "accessibilityText": "Pokemon Image"
                                 }
                                 }
