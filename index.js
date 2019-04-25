@@ -28,7 +28,11 @@ router.post('/', function(req, res) {
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(this.responseText)
-        var image = data.sprites.front_default;
+
+        //var image = data.sprites.front_default;
+        var image = '/resources/Professor_oak.png';
+
+
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
         switch(intent){
