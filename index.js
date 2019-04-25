@@ -37,7 +37,7 @@ router.post('/', function(req, res) {
         var output = '';
         switch(intent){
           case "Abilities": output = pokemon+" has the Ability '"+data.abilities[0].ability.name+"'."; break;
-          case "Height": output = pokemon+" is "+data.height+" meters tall."; break;
+          case "Height": output = pokemon+" is "+data.height+" feet tall."; break;
           default: output = "No Intent parsed"; break;
         }
       } else {
