@@ -40,15 +40,16 @@ router.post('/', function(req, res) {
           case "Height": output = pokemon+" is "+data.height+" feet tall."; break;
           case "Index": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
           case "Type": 
-            if(data.types.length == 1){
-                output = pokemon + " is an " + data.types[1].type.name + "-type Pokemon.";
-            }
-            else if(data.types.length == 2){
-                output = pokemon + " is an " + data.types[0].type.name + " and " + data.types[0].type.name + " type pokemon";
-            }
-            else{
-                output = "wtf... according to the pokedex there is no type for " + pokemon;
-            }
+            output = data.types.length;
+            //if(data.types.length == 1){
+            //    output = pokemon + " is an " + data.types[1].type.name + "-type Pokemon.";
+            //}
+            //else if(data.types.length == 2){
+            //    output = pokemon + " is an " + data.types[0].type.name + " and " + data.types[0].type.name + " type pokemon";
+            //}
+            //else{
+            //    output = "wtf... according to the pokedex there is no type for " + pokemon;
+            //}
              
             break;
           default: output = "No Intent parsed"; break;
