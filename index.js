@@ -44,10 +44,10 @@ router.post('/', function(req, res) {
                 output = pokemon + " is an " + data.types[0].type.name + "-type Pokemon.";
             }
             else if(data.types.length == 2){
-                output = pokemon + " is an " + data.types[1].type.name + " and " + data.types[0].type.name + " type pokemon";
+                output = pokemon + " is an " + data.types[1].type.name + " and " + data.types[0].type.name + " type pokemon.";
             }
             else{
-                output = "wtf... according to the pokedex there is no type for " + pokemon;
+                output = "wtf... according to the pokedex there is no type for " + pokemon + ".";
             }
              
             break;
