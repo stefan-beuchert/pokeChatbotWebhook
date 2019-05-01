@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
           case "Type": 
             if(data.types.length == 1){
                 //output = pokemon + " is an " + data.types[1].type.name + "-type Pokemon.";
-                output = data.types[1].type.name;
+                output = data.types[0].type.name;
             }
             //else if(data.types.length == 2){
             //    output = pokemon + " is an " + data.types[0].type.name + " and " + data.types[0].type.name + " type pokemon";
