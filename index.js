@@ -127,7 +127,7 @@ router.post('/', function(req, res) {
 
 router.get('/img.png', function(req, res) {
       // res.header("Content-Type", "image/png");
-      res.sendFile('./result/riolu.png');
+      res.download('./result/riolu.png');
 });
 
 app.use('/api', router);
