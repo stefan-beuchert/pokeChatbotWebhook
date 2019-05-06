@@ -61,7 +61,7 @@ router.post('/', function(req, res) {
           processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
         }
 
-        var image = 'http://pokehook.azurewebsites.net/riolu.png'
+        var image = 'http://pokehook.azurewebsites.net/final.gif'
 
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
