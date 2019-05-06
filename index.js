@@ -2,8 +2,9 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 const basicAuth = require('express-basic-auth');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+require('./imageProcessing')
 
-var app        = express();
+var app = express();
 
 app.use(basicAuth({
     users: { 
@@ -29,9 +30,14 @@ router.post('/', function(req, res) {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(this.responseText)
 
-        //var image = data.sprites.front_default;
-        var image = 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/23c3b120-e209-4850-9d73-af3fe703e962/dcybyvi-e4924343-e5dd-4e04-826c-8a9287f92c0c.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIzYzNiMTIwLWUyMDktNDg1MC05ZDczLWFmM2ZlNzAzZTk2MlwvZGN5Ynl2aS1lNDkyNDM0My1lNWRkLTRlMDQtODI2Yy04YTkyODdmOTJjMGMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.PDmy73FKHdsz9fbaJwJf1m4kQi3QgHcGRt1jpgWgSi8';
+        // var image = data.sprites.front_default;
+        // var image = 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/23c3b120-e209-4850-9d73-af3fe703e962/dcybyvi-e4924343-e5dd-4e04-826c-8a9287f92c0c.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIzYzNiMTIwLWUyMDktNDg1MC05ZDczLWFmM2ZlNzAzZTk2MlwvZGN5Ynl2aS1lNDkyNDM0My1lNWRkLTRlMDQtODI2Yy04YTkyODdmOTJjMGMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.PDmy73FKHdsz9fbaJwJf1m4kQi3QgHcGRt1jpgWgSi8';
 
+        for(i=0;i<10;++i){
+          processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
+        }
+
+        var image = './resources/final.gif'
 
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
@@ -39,7 +45,7 @@ router.post('/', function(req, res) {
           case "Abilities": output = pokemon+" has the Ability '"+data.abilities[0].ability.name+"'."; break;
           case "Height": output = pokemon+" is "+data.height+" feet tall."; break;
           case "Index": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
-            case "First Appearance": output = pokemon + " first appeared in version " + data.game_indices[0].version.name + "."; break;
+          case "First Appearance": output = pokemon + " first appeared in version " + data.game_indices[0].version.name + "."; break;
           case "Type": 
             if(data.types.length == 1){
                 output = pokemon + " is an " + data.types[0].type.name + "-type Pokemon.";
