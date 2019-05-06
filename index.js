@@ -125,8 +125,8 @@ router.post('/', function(req, res) {
     request.send()
 });
 
-router.get('/img', function(req, res) {
-      res.header("Content-Type", "image/png");
+router.get('/img.png', function(req, res) {
+      // res.header("Content-Type", "image/png");
       res.sendFile('./result/riolu.png');
 });
 
