@@ -1,3 +1,4 @@
+var path = require('path');
 var express    = require('express');   
 var bodyParser = require('body-parser');
 const basicAuth = require('express-basic-auth');
@@ -17,7 +18,7 @@ app.use(basicAuth({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static('result'));
+// app.use(express.static('result'));
 
 var port = process.env.PORT || 8080;        // set port
 var router = express.Router();              // get instance of express Router
@@ -124,6 +125,36 @@ router.post('/', function(req, res) {
         })
     }
     request.send()
+});
+
+var dir = path.join(__dirname, 'result');
+
+var mime = {
+    html: 'text/html',
+    txt: 'text/plain',
+    css: 'text/css',
+    gif: 'image/gif',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    js: 'application/javascript'
+};
+
+app.get('*', function (req, res) {
+    var file = path.join(dir, req.path.replace(/\/$/, '/index.html'));
+    if (file.indexOf(dir + path.sep) !== 0) {
+        return res.status(403).end('Forbidden');
+    }
+    var type = mime[path.extname(file).slice(1)] || 'text/plain';
+    var s = fs.createReadStream(file);
+    s.on('open', function () {
+        res.set('Content-Type', type);
+        s.pipe(res);
+    });
+    s.on('error', function () {
+        res.set('Content-Type', 'text/plain');
+        res.status(404).end('Not found');
+    });
 });
 
 app.use('/api', router);
