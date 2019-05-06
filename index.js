@@ -126,7 +126,8 @@ router.post('/', function(req, res) {
 });
 
 router.get('/img', function(req, res) {
-      res.sendFile('./resources/final.gif')
+      //res.sendFile('./resources/final.gif')
+      res.sendFile('./resources/riolu.png')
 });
 
 app.use('/api', router);
