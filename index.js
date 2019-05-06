@@ -60,7 +60,7 @@ router.post('/', function(req, res) {
           processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
         }
 
-        var image = 'http://pokehook.azurewebsites.net/api/img.png'
+        var image = 'http://pokehook.azurewebsites.net/api/final.gif'
 
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
@@ -125,7 +125,7 @@ router.post('/', function(req, res) {
     request.send()
 });
 
-router.get('/img.png', function(req, res) {
+router.get('/final.gif', function(req, res) {
       // res.header("Content-Type", "image/png");
       res.download('./result/final.gif');
 });
