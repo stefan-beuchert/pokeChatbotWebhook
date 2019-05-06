@@ -128,7 +128,7 @@ router.post('/', function(req, res) {
 router.get('/final.gif', function(req, res) {
       // res.header("Content-Type", "image/png");
       // res.download('./result/final.gif');
-      res.send('./result/final.gif');
+      res.sendFile('./result/final.gif');
 
 });
 
