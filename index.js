@@ -1,4 +1,3 @@
-var path = require('path');
 var express    = require('express');   
 var bodyParser = require('body-parser');
 const basicAuth = require('express-basic-auth');
@@ -18,7 +17,6 @@ app.use(basicAuth({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(express.static('result'));
 
 var port = process.env.PORT || 8080;        // set port
 var router = express.Router();              // get instance of express Router
@@ -62,7 +60,7 @@ router.post('/', function(req, res) {
           processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
         }
 
-        var image = 'http://pokehook.azurewebsites.net/final.gif'
+        var image = 'http://pokehook.azurewebsites.net/api/img'
 
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
@@ -127,34 +125,14 @@ router.post('/', function(req, res) {
     request.send()
 });
 
-var dir = path.join(__dirname, 'result');
+router.get('/img', function(req, res) {
+  var buf = new Buffer([
+    0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00, 0x01, 0x00, 
+    0x80, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x2c, 
+    0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x02, 
+    0x02, 0x44, 0x01, 0x00, 0x3b]);
 
-var mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-};
-
-app.get('*', function (req, res) {
-    var file = path.join(dir, req.path.replace(/\/$/, '/index.html'));
-    if (file.indexOf(dir + path.sep) !== 0) {
-        return res.status(403).end('Forbidden');
-    }
-    var type = mime[path.extname(file).slice(1)] || 'text/plain';
-    var s = fs.createReadStream(file);
-    s.on('open', function () {
-        res.set('Content-Type', type);
-        s.pipe(res);
-    });
-    s.on('error', function () {
-        res.set('Content-Type', 'text/plain');
-        res.status(404).end('Not found');
-    });
+res.send(buf, { 'Content-Type': 'image/gif' }, 200);
 });
 
 app.use('/api', router);
