@@ -45,7 +45,7 @@ router.post('/', function(req, res) {
             Jimp.read(pkmn, (err, pkmn) => {
                 if (err) throw err;
                 pkmn
-                .resize(75,75)
+                .resize(50,50)
                 Jimp.read(background, (err, background) => {
                     if (err) throw err;
                     background
