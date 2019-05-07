@@ -53,7 +53,7 @@ router.post('/', function(req, res) {
                     if (err) throw err;
                     oak
                     .composite(riolu, 500, 100)
-                    .resize(250,250);
+                    .scale(0.5);
                     encoder.addFrame(oak.bitmap.data)
                 });
             });
