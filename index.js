@@ -45,16 +45,16 @@ router.post('/', function(req, res) {
         encoder.setQuality(10); // image quality. 10 is default. 
 
         function processFrame(background, pkmn){
-            Jimp.read(pkmn, (err, riolu) => {
+            Jimp.read(pkmn, (err, pkmn) => {
                 if (err) throw err;
-                riolu
+                pkmn
                 .resize(100,100)
-                Jimp.read(background, (err, oak) => {
+                Jimp.read(background, (err, background) => {
                     if (err) throw err;
-                    oak
-                    .composite(riolu, 500, 100)
+                    background
+                    .composite(pkmn, 500, 100)
                     .resize(230,126);
-                    encoder.addFrame(oak.bitmap.data)
+                    encoder.addFrame(background.bitmap.data)
                 });
             });
         }
