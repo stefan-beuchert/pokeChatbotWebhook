@@ -32,7 +32,7 @@ router.post('/', function(req, res) {
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(this.responseText)
-        
+
         var encoder = new GIFEncoder(921, 506);
         encoder.createReadStream().pipe(fs.createWriteStream('./result/final.gif'));
 
@@ -50,6 +50,7 @@ router.post('/', function(req, res) {
                     if (err) throw err;
                     background
                     .composite(pkmn, 500, 100)
+                    .resize(400,250);
                     encoder.addFrame(background.bitmap.data)
                 });
             });
