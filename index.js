@@ -49,8 +49,8 @@ router.post('/', function(req, res) {
                 Jimp.read(background, (err, background) => {
                     if (err) throw err;
                     background
-                    .composite(pkmn, 300, 200)
-                    .resize(400,250);
+                    .resize(400,250)
+                    .composite(pkmn, 200, 100);
                     encoder.addFrame(background.bitmap.data)
                 });
             });
