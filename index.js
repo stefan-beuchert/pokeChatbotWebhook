@@ -50,7 +50,7 @@ router.post('/', function(req, res) {
                     if (err) throw err;
                     background
                     // .resize(400,250)
-                    .composite(pkmn, 200, 100);
+                    .composite(pkmn, 0, 0);
                     encoder.addFrame(background.bitmap.data)
                 });
             });
