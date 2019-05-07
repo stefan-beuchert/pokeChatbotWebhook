@@ -17,6 +17,7 @@ app.use(basicAuth({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('result'));
 
 var port = process.env.PORT || 8080;        // set port
 var router = express.Router();              // get instance of express Router
@@ -125,12 +126,12 @@ router.post('/', function(req, res) {
     request.send()
 });
 
-router.get('/final.gif', function(req, res) {
-      res.header("Content-Type", "image/gif");
-      // res.download('./result/final.gif');
-      res.sendFile('./result/final.gif');
+// router.get('/final.gif', function(req, res) {
+//       res.header("Content-Type", "image/gif");
+//       // res.download('./result/final.gif');
+//       res.sendFile('./result/final.gif');
 
-});
+// });
 
 app.use('/api', router);
 
