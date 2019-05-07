@@ -59,9 +59,9 @@ router.post('/', function(req, res) {
             });
         }
 
-        for(i=0;i<10;++i){
-          processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
-        }
+        // for(i=0;i<10;++i){
+        //   processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
+        // }
 
         var image = 'http://pokehook.azurewebsites.net/final.gif'
 
