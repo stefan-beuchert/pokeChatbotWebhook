@@ -67,16 +67,15 @@ router.post('/', function(req, res) {
                   if (err) throw err;
                   pkmn
                   .resize(100,100)
-                  Jimp.read('./resources/oak_0.png', (err, background) => {
+                  Jimp.read('./resources/oak_00.png', (err, background) => {
                       if (err) throw err;
                       background
                       .composite(pkmn, 500, 100)
-                      .resize(230,126);
                       encoder.addFrame(background.bitmap.data)
                   });
               });
 
-        encoder.finish();
+        //encoder.finish();
 
         var image = 'http://pokehook.azurewebsites.net/final.gif'
 
