@@ -45,11 +45,11 @@ router.post('/', function(req, res) {
             Jimp.read(pkmn, (err, pkmn) => {
                 if (err) throw err;
                 pkmn
-                .resize(300,300)
+                .resize(50,50)
                 Jimp.read(background, (err, background) => {
                     if (err) throw err;
                     background
-                    .composite(pkmn, 500, 100)
+                    .composite(pkmn, 0, 0)
                     .resize(400,250);
                     encoder.addFrame(background.bitmap.data)
                 });
