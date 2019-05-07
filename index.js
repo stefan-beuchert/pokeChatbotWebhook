@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
         encoder.start();
         encoder.setRepeat(0);   // 0 for repeat, -1 for no-repeat 
         encoder.setDelay(200);  // frame delay in ms 
-        encoder.setQuality(10); // image quality. 10 is default. 
+        encoder.setQuality(1); // image quality. 10 is default. 
 
         function processFrame(background, pkmn){
             Jimp.read(pkmn, (err, pkmn) => {
@@ -58,7 +58,7 @@ router.post('/', function(req, res) {
             });
         }
 
-        for(i=0;i<10;++i){
+        for(i=0;i<5;++i){
           processFrame('./resources/oak_0'+i+'.png', data.sprites.front_default)
         }
 
