@@ -51,7 +51,9 @@ router.post('/', function(req, res) {
                 .resize(100,100)
                 Jimp.read(background, (err, oak) => {
                     if (err) throw err;
-                    oak.composite(riolu, 500, 100);
+                    oak
+                    .composite(riolu, 500, 100)
+                    .resize(250,250);
                     encoder.addFrame(oak.bitmap.data)
                 });
             });
