@@ -77,7 +77,7 @@ router.post('/', function(req, res) {
 
         //encoder.finish();
 
-        var image = 'http://pokehook.azurewebsites.net/final.gif'
+        var image = 'https://pokehook.azurewebsites.net/final.gif'
 
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
