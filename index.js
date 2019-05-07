@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(this.responseText)
 
-        var encoder = new GIFEncoder(921, 506);
+        var encoder = new GIFEncoder(400, 250);
         encoder.createReadStream().pipe(fs.createWriteStream('./result/final.gif'));
 
         encoder.start();
