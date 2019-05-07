@@ -44,36 +44,36 @@ router.post('/', function(req, res) {
         encoder.setDelay(200);  // frame delay in ms 
         encoder.setQuality(10); // image quality. 10 is default. 
 
-        // function processFrame(background, pkmn){
-        //     Jimp.read(pkmn, (err, pkmn) => {
-        //         if (err) throw err;
-        //         pkmn
-        //         .resize(100,100)
-        //         Jimp.read(background, (err, background) => {
-        //             if (err) throw err;
-        //             background
-        //             .composite(pkmn, 500, 100)
-        //             .resize(230,126);
-        //             encoder.addFrame(background.bitmap.data)
-        //         });
-        //     });
-        // }
+        function processFrame(background, pkmn){
+            Jimp.read(pkmn, (err, pkmn) => {
+                if (err) throw err;
+                pkmn
+                .resize(100,100)
+                Jimp.read(background, (err, background) => {
+                    if (err) throw err;
+                    background
+                    .composite(pkmn, 500, 100)
+                    .resize(230,126);
+                    encoder.addFrame(background.bitmap.data)
+                });
+            });
+        }
 
-        // for(i=0;i<10;++i){
-        //   processFrame('./resources/oak_0'+i+'.png', './resources/riolu.png')
-        // }
+        for(i=0;i<10;++i){
+          processFrame('./resources/oak_0'+i+'.png', data.sprites.front_default)
+        }
 
-        Jimp.read(data.sprites.front_default, (err, pkmn) => {
-                  if (err) throw err;
-                  pkmn
-                  .resize(100,100)
-                  Jimp.read('./resources/oak_00.png', (err, background) => {
-                      if (err) throw err;
-                      background
-                      .composite(pkmn, 500, 100)
-                      encoder.addFrame(background.bitmap.data)
-                  });
-              });
+        // Jimp.read(data.sprites.front_default, (err, pkmn) => {
+        //           if (err) throw err;
+        //           pkmn
+        //           .resize(100,100)
+        //           Jimp.read('./resources/oak_00.png', (err, background) => {
+        //               if (err) throw err;
+        //               background
+        //               .composite(pkmn, 500, 100)
+        //               encoder.addFrame(background.bitmap.data)
+        //           });
+        //       });
 
         //encoder.finish();
 
