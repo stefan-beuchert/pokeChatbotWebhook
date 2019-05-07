@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
         encoder.setDelay(200);  // frame delay in ms 
         encoder.setQuality(1); // image quality. 10 is default. 
 
-        function processFrame(background, pkmn, move){
+        function processFrame(background, pkmn, move1, move2){
             Jimp.read(pkmn, (err, pkmn) => {
                 if (err) throw err;
                 pkmn
@@ -49,17 +49,17 @@ router.post('/', function(req, res) {
                 Jimp.read(background, (err, background) => {
                     if (err) throw err;
                     background
-                    .composite(pkmn, move, 80)
+                    .composite(pkmn, move1, move2)
                     .resize(400,250);
                     encoder.addFrame(background.bitmap.data)
                 });
             });
         }
 
-        processFrame('./resources/oak_00.png', data.sprites.front_default, 500)
-        processFrame('./resources/oak_01.png', data.sprites.front_default, 450)
-        processFrame('./resources/oak_02.png', data.sprites.front_default, 500)
-        processFrame('./resources/oak_03.png', data.sprites.front_default, 450)
+        processFrame('./resources/oak_00.png', data.sprites.front_default, 500, 75)
+        processFrame('./resources/oak_01.png', data.sprites.front_default, 500, 75)
+        processFrame('./resources/oak_02.png', data.sprites.front_default, 490, 80)
+        processFrame('./resources/oak_03.png', data.sprites.front_default, 490, 80)
 
 
         // Jimp.read(data.sprites.front_default, (err, pkmn) => {
