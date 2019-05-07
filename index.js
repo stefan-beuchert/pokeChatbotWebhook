@@ -48,7 +48,7 @@ router.post('/', function(req, res) {
             Jimp.read(pkmn, (err, pkmn) => {
                 if (err) throw err;
                 pkmn
-                .resize(100,100)
+                .resize(300,300)
                 Jimp.read(background, (err, background) => {
                     if (err) throw err;
                     background
@@ -58,7 +58,7 @@ router.post('/', function(req, res) {
             });
         }
 
-        for(i=0;i<5;++i){
+        for(i=0;i<10;++i){
           processFrame('./resources/oak_0'+i+'.png', data.sprites.front_default)
         }
 
