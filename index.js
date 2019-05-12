@@ -91,7 +91,7 @@ router.post('/', function(req, res) {
           case "Height": output = pokemon+" is "+data.height+" feet tall."; break;
           case "Index": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
           case "First Appearance": output = pokemon + " first appeared in version " + data.game_indices[0].version.name + "."; break;
-          case "Shiny": output = " this is what " + pokemon + " in shiny looks like."; break;
+          case "Shiny": output = " this is what " + pokemon + " in shiny looks like. " + intent; break;
           case "Type": 
             if(data.types.length == 1){
                 output = pokemon + " is an " + data.types[0].type.name + "-type Pokemon.";
