@@ -55,12 +55,18 @@ router.post('/', function(req, res) {
                 });
             });
         }
-
-        processFrame('./resources/oak_00.png', data.sprites.front_default, 500, 75)
-        processFrame('./resources/oak_01.png', data.sprites.front_default, 500, 75)
-        processFrame('./resources/oak_02.png', data.sprites.front_default, 490, 80)
-        processFrame('./resources/oak_03.png', data.sprites.front_default, 490, 80)
-
+        if (intent == "Shiny"){
+          processFrame('./resources/oak_00.png', data.sprites.front_shiny, 500, 75)
+          processFrame('./resources/oak_01.png', data.sprites.front_shiny, 500, 75)
+          processFrame('./resources/oak_02.png', data.sprites.front_shiny, 490, 80)
+          processFrame('./resources/oak_03.png', data.sprites.front_shiny, 490, 80)
+        }
+        else{
+          processFrame('./resources/oak_00.png', data.sprites.front_default, 500, 75)
+          processFrame('./resources/oak_01.png', data.sprites.front_default, 500, 75)
+          processFrame('./resources/oak_02.png', data.sprites.front_default, 490, 80)
+          processFrame('./resources/oak_03.png', data.sprites.front_default, 490, 80)
+        }
 
         // Jimp.read(data.sprites.front_default, (err, pkmn) => {
         //           if (err) throw err;
@@ -85,7 +91,7 @@ router.post('/', function(req, res) {
           case "Height": output = pokemon+" is "+data.height+" feet tall."; break;
           case "Index": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
           case "First Appearance": output = pokemon + " first appeared in version " + data.game_indices[0].version.name + "."; break;
-          case "Shiny": output = " this is what " + pokemon + " in shiny looks like.", processFrame('./resources/oak_00.png', data.sprites.front_shiny, 500, 75); break;
+          case "Shiny": output = " this is what " + pokemon + " in shiny looks like."; break;
           case "Type": 
             if(data.types.length == 1){
                 output = pokemon + " is an " + data.types[0].type.name + "-type Pokemon.";
