@@ -104,6 +104,13 @@ router.post('/', function(req, res) {
             }
              
             break;
+          case "Succesful": 
+                request.open('GET', data.types[0].type.url, true)
+                request.onload = function() {
+                    var datatype = JSON.parse(this.responseText)
+                    output = pokemon * " is most succesful against type " + datatype.damage_relations.double_damage_to[0].name;
+                }
+                request.send()
           default: output = "No Intent parsed"; break;
         }
       } else {
