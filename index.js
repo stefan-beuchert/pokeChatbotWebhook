@@ -26,7 +26,6 @@ router.post('/', function(req, res) {
     var request = new XMLHttpRequest()
     var intent = req.body.queryResult.intent['displayName'];
     var pokemon = req.body.queryResult.parameters['pokemon'];
-    print(pokemon);
     pokemon = pokemon.charAt(0).toLowerCase() + pokemon.slice(1);
     request.open('GET', 'https://pokeapi.co/api/v2/pokemon/'+pokemon+'/', true)
   
