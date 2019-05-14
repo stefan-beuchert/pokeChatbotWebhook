@@ -105,16 +105,17 @@ router.post('/', function(req, res) {
              
             break;
           case "Succesful": 
-                request.open('GET', data.types[0].type.url, true)
-                request.onload = function() {
-                    if (request.status >= 200 && request.status < 400) {
+                var requesttype = new XMLHttpRequest()
+                requesttype.open('GET', data.types[0].type.url, true)
+                requesttype.onload = function() {
+                    if (requesttype.status >= 200 && requesttype.status < 400) {
                         var datatype = JSON.parse(this.responseText)
                         output = pokemon + " is most succesful against type " + datatype.damage_relations.double_damage_to[0].name;
                     } else {
                         output = pokemon + " is not succesful.";
                     }
                 }
-                request.send() 
+                requesttype.send() 
                 break;
           default: output = "No Intent parsed"; break;
         }
