@@ -111,6 +111,7 @@ router.post('/', function(req, res) {
                     output = pokemon * " is most succesful against type " + datatype.damage_relations.double_damage_to[0].name;
                 }
                 request.send()
+                break;
           default: output = "No Intent parsed"; break;
         }
       } else {
