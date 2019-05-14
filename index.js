@@ -1,6 +1,6 @@
 var express    = require('express');   
 var bodyParser = require('body-parser');
-const basicAuth = require('express-basic-auth');
+//const basicAuth = require('express-basic-auth');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var Jimp = require('jimp');
 var GIFEncoder = require('gifencoder');
@@ -26,6 +26,7 @@ router.post('/', function(req, res) {
     var request = new XMLHttpRequest()
     var intent = req.body.queryResult.intent['displayName'];
     var pokemon = req.body.queryResult.parameters['pokemon'];
+    print(pokemon);
     pokemon = pokemon.charAt(0).toLowerCase() + pokemon.slice(1);
     request.open('GET', 'https://pokeapi.co/api/v2/pokemon/'+pokemon+'/', true)
   
