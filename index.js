@@ -1,5 +1,6 @@
 var express    = require('express');   
 var bodyParser = require('body-parser');
+var helper = require ('./code/helper');
 //const basicAuth = require('express-basic-auth');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var Jimp = require('jimp');
