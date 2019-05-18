@@ -84,6 +84,9 @@ router.post('/', function(req, res) {
 
         var image = 'https://pokehook.azurewebsites.net/final.gif'
 
+        var data = helper.getData(
+          url = 'https://pokeapi.co/api/v2/pokemon/' + pokemon);
+
         pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
         var output = '';
         switch(intent){
