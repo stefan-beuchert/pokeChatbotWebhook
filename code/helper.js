@@ -59,6 +59,41 @@ module.exports =  {
             processFrame('./resources/oak_02.png', data.sprites.front_default, 490, 80)
             processFrame('./resources/oak_03.png', data.sprites.front_default, 490, 80)
         }
+    },
+
+    createResponse : function(image, pokemon, output){
+        return {
+            "fulfillmentText": output,
+            "fulfillmentMessages": [{
+                "card": {
+                  "title": output,
+                  "imageUri": image
+                }
+            }],
+            "payload": {
+                "google": {
+                  "expectUserResponse": true,
+                  "richResponse": {
+                    "items": [{
+                            "simpleResponse": {
+                                "textToSpeech": output
+                            }
+                        },
+                        {
+                            "basicCard": {
+                                "title": pokemon,
+                                "formattedText": "Picture of a "+pokemon,
+                                "image": {
+                                    "url": image,
+                                    "accessibilityText": "Pokemon Image"
+                                }
+                            }
+                            }
+                        ]
+                      }
+                    }
+                }
+        }
     }
 }
 

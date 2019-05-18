@@ -20,6 +20,9 @@ router.post('/', function(req, res) {
     var data = helper.getData(
         url = 'https://pokeapi.co/api/v2/pokemon/' + pokemon);
 
+    helper.createGif(intent, data);
+        var image = 'https://pokehook.azurewebsites.net/final.gif';
+
     var output = '';
     switch(intent){
         case "Abilities": output = pokemon+" has the Ability '"+data.abilities[0].ability.name+"'."; break;
@@ -60,42 +63,8 @@ router.post('/', function(req, res) {
             break;
         default: output = "No Intent parsed"; break;
         }
-
-        helper.createGif(intent, data);
-        var image = 'https://pokehook.azurewebsites.net/final.gif';
         
-        res.json({
-            "fulfillmentText": output,
-            "fulfillmentMessages": [{
-                "card": {
-                  "title": output,
-                  "imageUri": image
-                }
-            }],
-            "payload": {
-                "google": {
-                  "expectUserResponse": true,
-                  "richResponse": {
-                    "items": [{
-                            "simpleResponse": {
-                                "textToSpeech": output
-                            }
-                        },
-                        {
-                            "basicCard": {
-                                "title": pokemon,
-                                "formattedText": "Picture of a "+pokemon,
-                                "image": {
-                                    "url": image,
-                                    "accessibilityText": "Pokemon Image"
-                                }
-                            }
-                            }
-                        ]
-                      }
-                    }
-                }
-        })
+        res.json(helper.createResponse(image, pokemon, output));
 });
 
 app.use('/api', router);
