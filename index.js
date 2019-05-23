@@ -35,7 +35,7 @@ router.post('/', function(req, res) {
                 url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);   
             i = 0;
             while (i < 50){
-                if(datadex.flavor_text_entries[i].language == 'en'){
+                if(datadex.flavor_text_entries[i].language.name == 'en'){
                     output = "The Pokedex Entry of " + pokemon + " is called " + datadex.flavor_text_entries[0].flavor_text; 
                     break;
                 }
