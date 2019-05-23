@@ -30,7 +30,10 @@ router.post('/', function(req, res) {
         case "Index": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
         case "First Appearance": output = pokemon + " first appeared in version " + data.game_indices[data.game_indices.length-1].version.name + "."; break;
         case "Shiny": output = " this is what " + pokemon + " in shiny looks like. "; break;
-        case "PokedexEntry": output = "The Pokedex Entry of " + pokemon; break;
+        case "PokedexEntry": 
+            var data = helper.getData(
+                url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);            
+            output = "The Pokedex Entry of " + pokemon + " is called " + data.flavor_text_entries[0].flavor_text; break;
         case "Type": 
           case "Type": 
         case "Type": 
