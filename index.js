@@ -56,7 +56,7 @@ router.post('/', function(req, res) {
         case "Succesful": 
             var datadex = helper.getData(
                 url = data.types[0].type.url);
-                output = pokemon + " gives double damage to " + datadex.double_damage_to.name;
+                output = pokemon + " gives double damage to " + datadex.double_damage_to[0].name;
             break;            
         default: output = "No Intent parsed"; break;
         }
