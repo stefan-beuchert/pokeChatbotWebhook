@@ -61,6 +61,16 @@ router.post('/', function(req, res) {
                 requesttype.send() 
             requesttype.send() 
             break;
+        case "Pokedex Entry":
+          case "Pokedex Entry":
+        case "Pokedex Entry":
+            var data = helper.getData(
+                url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);
+            output = 'The Pokedex Entry of ' + pokemon + 'in version ' + data.flavor_text_entries.version.name + ' is called: ' + data.flavor_text_entries[0].flavor_text;
+            break;
+            
+            
+            
         default: output = "No Intent parsed"; break;
         }
         
