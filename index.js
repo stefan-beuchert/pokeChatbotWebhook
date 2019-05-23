@@ -54,8 +54,8 @@ router.post('/', function(req, res) {
             }
         break;
         case "Succesful": 
-            var datadex = helper.getData(url = 'https://pokeapi.co/api/v2/type/13/');
-                output = pokemon + " gives double damage to " + datadex.damage_relations.double_damage_to[0].name;
+            var typedata = helper.getData(url = 'https://pokeapi.co/api/v2/type/13/');
+                output = pokemon + " gives double damage to " + typedata.damage_relations.double_damage_to[0].name;
             break;            
         default: output = "No Intent parsed"; break;
         }
