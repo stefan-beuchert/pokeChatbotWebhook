@@ -59,14 +59,25 @@ router.post('/', function(req, res) {
                 output = pokemon + " gives double damage to ";
                 var i = 0;
                 while (i < typedata.damage_relations.double_damage_to.length) {
-                    output = output + typedata.damage_relations.double_damage_to[0].name + ", ";
+                    output = output + typedata.damage_relations.double_damage_to[i].name + ", ";
                     i = i +1;
                 } 
                 output = output.substr(0, output.length-2);
             } else if(data.types.length == 2){
                 var typedata_one = helper.getData(url = 'https://pokeapi.co/api/v2/type/' + data.types[0].type.name);
                 var typedata_two = helper.getData(url = 'https://pokeapi.co/api/v2/type/' + data.types[1].type.name);
-                output = 'hi';
+                output = pokemon + " gives double damage to ";
+                var i = 0;
+                while (i < typedata_one.damage_relations.double_damage_to.length) {
+                    output = output + typedata_one.damage_relations.double_damage_to[i].name + ", ";
+                    i = i +1;
+                } 
+                i = 0;
+                while (i < typedata_two.damage_relations.double_damage_to.length) {
+                    output = output + typedata_two.damage_relations.double_damage_to[i].name + ", ";
+                    i = i +1;
+                } 
+                output = output.substr(0, output.length-2);
             } else {
                 output = "wtf... according to the pokedex there is no type for " + pokemon + ".";
             }
