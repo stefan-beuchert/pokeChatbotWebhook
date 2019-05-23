@@ -32,8 +32,15 @@ router.post('/', function(req, res) {
         case "Shiny": output = " this is what " + pokemon + " in shiny looks like. "; break;
         case "PokedexEntry": 
             var datadex = helper.getData(
-                url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);            
-            output = "The Pokedex Entry of " + pokemon + " is called " + datadex.flavor_text_entries[0].flavor_text; 
+                url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);   
+            i = 0;
+            while (i < 50){
+                if(datadex.flavor_text_entries[i].language == 'en'){
+                    output = "The Pokedex Entry of " + pokemon + " is called " + datadex.flavor_text_entries[0].flavor_text; 
+                    break;
+                }
+                i = i +1;
+            }   
         break;
         case "Type": 
           case "Type": 
