@@ -61,13 +61,11 @@ router.post('/', function(req, res) {
                 requesttype.send() 
             requesttype.send() 
             break;
-        case "Pokedex Entry":
-          case "Pokedex Entry":
-        case "Pokedex Entry":
+        case "Pokedex Entry": output = 'The Pokedex Entry of ' + pokemon + 'in version '; break;
           //  var data = helper.getData(
           //      url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);
-            output = 'The Pokedex Entry of ' + pokemon + 'in version '; // is called: ' + data.flavor_text_entries[0].flavor_text;
-        break;
+             // is called: ' + data.flavor_text_entries[0].flavor_text;
+        
             
             
             
