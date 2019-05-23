@@ -36,7 +36,7 @@ router.post('/', function(req, res) {
             i = 0;
             while (i < 50){
                 if(datadex.flavor_text_entries[i].language.name == 'en'){
-                    output = "The Pokedex Entry of " + pokemon + " is called " + datadex.flavor_text_entries[0].flavor_text; 
+                    output = "The Pokedex Entry of " + pokemon + " is called " + datadex.flavor_text_entries[i].flavor_text; 
                     break;
                 }
                 i = i +1;
