@@ -67,7 +67,7 @@ router.post('/', function(req, res) {
           //  var data = helper.getData(
           //      url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);
             output = 'The Pokedex Entry of ' + pokemon + 'in version '; // is called: ' + data.flavor_text_entries[0].flavor_text;
-            break;
+        break;
             
             
             
