@@ -74,8 +74,9 @@ router.post('/', function(req, res) {
                 } 
                 i = 0;
                 while (i < typedata_two.damage_relations.double_damage_to.length) {
+                    if(output.indexOf(typedata_two.damage_relations.double_damage_to[i].name) == -1){
                     output = output + typedata_two.damage_relations.double_damage_to[i].name + ", ";
-                    i = i +1;
+                    } i = i +1;
                 } 
                 output = output.substr(0, output.length-2);
             } else {
