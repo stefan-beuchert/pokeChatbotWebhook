@@ -41,43 +41,23 @@ router.post('/', function(req, res) {
                 }
                 i = i +1;
             }   
-        break;
+        break; 
         case "Type": 
-          case "Type": 
-        case "Type": 
-        if(data.types.length == 1){
-            output = pokemon + " is an " + data.types[0].type.name + "-type Pokemon.";
-        }
-        else if(data.types.length == 2){
-            output = pokemon + " is an " + data.types[1].type.name + " and " + data.types[0].type.name + " type pokemon.";
-        }
-        else{
-            output = "wtf... according to the pokedex there is no type for " + pokemon + ".";
-        }
-            
-        break;
-        case "Succesful": 
-          case "Succesful": 
-        case "Succesful": 
-            var requesttype = new XMLHttpRequest()
-            requesttype.open('GET', data.types[0].type.url, true)
-            requesttype.onload = function() {
-                if (requesttype.status >= 200 && requesttype.status < 400) {
-                    var datatype = JSON.parse(this.responseText)
-                    output = pokemon + " is most succesful against type " + datatype.damage_relations.double_damage_to[0].name;
-                } else {
-                    output = pokemon + " is not succesful.";
-                }
+            if(data.types.length == 1){
+                output = pokemon + " is an " + data.types[0].type.name + "-type Pokemon.";
             }
-            requesttype.send() 
-                requesttype.send() 
-            requesttype.send() 
-            break;
-        
-        
-            
-            
-            
+            else if(data.types.length == 2){
+                output = pokemon + " is an " + data.types[1].type.name + " and " + data.types[0].type.name + " type pokemon.";
+            }
+            else{
+                output = "wtf... according to the pokedex there is no type for " + pokemon + ".";
+            }
+        break;
+        case "Succesful": 
+            var datadex = helper.getData(
+                url = data.types[0].type.url);
+                output = pokemon + " gives double damage to " + datadex.double_damage_to.name;
+            break;            
         default: output = "No Intent parsed"; break;
         }
         
