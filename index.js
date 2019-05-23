@@ -44,6 +44,10 @@ router.post('/', function(req, res) {
         }
             
         break;
+        case "PokedexEntry": output = 'The Pokedex Entry of ' + pokemon + 'in version '; break;
+          //  var data = helper.getData(
+          //      url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);
+             // is called: ' + data.flavor_text_entries[0].flavor_text;
         case "Succesful": 
           case "Succesful": 
         case "Succesful": 
@@ -61,10 +65,7 @@ router.post('/', function(req, res) {
                 requesttype.send() 
             requesttype.send() 
             break;
-        case "Pokedex Entry": output = 'The Pokedex Entry of ' + pokemon + 'in version '; break;
-          //  var data = helper.getData(
-          //      url = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon);
-             // is called: ' + data.flavor_text_entries[0].flavor_text;
+        
         
             
             
