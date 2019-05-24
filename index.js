@@ -65,7 +65,7 @@ router.post('/', function(req, res) {
                     } 
                     output = output.substr(0, output.length-2);
                     var pos = output.lastIndexOf(',');
-                    output = output.substring(0, pos) + ' and' + outptu.substring(pos+1);
+                    output = output.substring(0, pos) + ' and' + output.substring(pos+1);
                 } else {
                     output = "wtf... " + pokemon + " gives no double damage to anybody";   
                 }
@@ -96,7 +96,7 @@ router.post('/', function(req, res) {
                 } else {
                     output = output.substr(0, output.length-2);
                     var pos = output.lastIndexOf(',');
-                    output = output.substring(0, pos) + ' and' + outptu.substring(pos+1);
+                    output = output.substring(0, pos) + ' and' + output.substring(pos+1);
                 }
             } else {
                 output = "wtf... " + pokemon + " gives no double damage to anybody";
