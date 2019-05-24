@@ -60,10 +60,12 @@ router.post('/', function(req, res) {
                     output = pokemon + " gives double damage to ";
                     var i = 0;
                     while (i < typedata.damage_relations.double_damage_to.length) {
-                        output = output + typedata.damage_relations.double_damage_to[i].name + " and ";
+                        output = output + typedata.damage_relations.double_damage_to[i].name + ", ";
                         i = i +1;
                     } 
-                    output = output.substr(0, output.length-4);
+                    output = output.substr(0, output.length-2);
+                    var pos = output.lastIndexOf(',');
+                    output = output.substring(0, pos) + ' and' + outptu.substring(pos+1);
                 } else {
                     output = "wtf... " + pokemon + " gives no double damage to anybody";   
                 }
@@ -74,7 +76,7 @@ router.post('/', function(req, res) {
                 var no_response = false;
                 var i = 0;
                 while (i < typedata_one.damage_relations.double_damage_to.length) {
-                    output = output + typedata_one.damage_relations.double_damage_to[i].name + " and ";
+                    output = output + typedata_one.damage_relations.double_damage_to[i].name + ", ";
                     i = i +1;
                 } 
                 if (i == 0) {
@@ -83,7 +85,7 @@ router.post('/', function(req, res) {
                 i = 0;
                 while (i < typedata_two.damage_relations.double_damage_to.length) {
                     if(output.indexOf(typedata_two.damage_relations.double_damage_to[i].name) == -1){
-                    output = output + typedata_two.damage_relations.double_damage_to[i].name + " and ";
+                    output = output + typedata_two.damage_relations.double_damage_to[i].name + ", ";
                     } i = i +1;
                 } 
                 if (i == 0) {
@@ -92,7 +94,9 @@ router.post('/', function(req, res) {
                 if (no_response == true){
                     output = "wtf... " + pokemon + " gives no double damage to anybody";
                 } else {
-                    output = output.substr(0, output.length-4);
+                    output = output.substr(0, output.length-2);
+                    var pos = output.lastIndexOf(',');
+                    output = output.substring(0, pos) + ' and' + outptu.substring(pos+1);
                 }
             } else {
                 output = "wtf... " + pokemon + " gives no double damage to anybody";
