@@ -71,20 +71,31 @@ router.post('/', function(req, res) {
                 var typedata_one = helper.getData(url = 'https://pokeapi.co/api/v2/type/' + data.types[0].type.name);
                 var typedata_two = helper.getData(url = 'https://pokeapi.co/api/v2/type/' + data.types[1].type.name);
                 output = pokemon + " gives double damage to ";
+                var no_response = false;
                 var i = 0;
                 while (i < typedata_one.damage_relations.double_damage_to.length) {
                     output = output + typedata_one.damage_relations.double_damage_to[i].name + ", ";
                     i = i +1;
                 } 
+                if (i == 0) {
+                    var no_response = true;
+                }
                 i = 0;
                 while (i < typedata_two.damage_relations.double_damage_to.length) {
                     if(output.indexOf(typedata_two.damage_relations.double_damage_to[i].name) == -1){
                     output = output + typedata_two.damage_relations.double_damage_to[i].name + ", ";
                     } i = i +1;
                 } 
-                output = output.substr(0, output.length-2);
+                if (i == 0) {
+                    var no_response = true;
+                }
+                if (no_response == true){
+                    output = "wtf... " + pokemon + " gives no double damage to anybody";
+                } else {
+                    output = output.substr(0, output.length-4);
+                }
             } else {
-                output = pokemon + " has no double damage to anybody";
+                output = "wtf... " + pokemon + " gives no double damage to anybody";
             }
             break;            
         default: output = "No Intent parsed"; break;
