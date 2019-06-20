@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
 
     var uniID = uuidv1();
     helper.createGif(intent, data, uniID);
-    var image = 'https://pokehook.azurewebsites.net/final'+uniID+'.gif';
+    var image = 'https://pokehook.azurewebsites.net/'+uniID+'.gif';
 
     var output = '';
     switch(intent){

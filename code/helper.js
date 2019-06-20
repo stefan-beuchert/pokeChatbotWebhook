@@ -26,7 +26,7 @@ module.exports =  {
 
     createGif: function(intent, data, uniID){
         var encoder = new GIFEncoder(400, 250);
-        encoder.createReadStream().pipe(fs.createWriteStream('./result/final'+uniID+'.gif'));
+        encoder.createReadStream().pipe(fs.createWriteStream('./result/'+uniID+'.gif'));
     
         encoder.start();
         encoder.setRepeat(0);   // 0 for repeat, -1 for no-repeat 
