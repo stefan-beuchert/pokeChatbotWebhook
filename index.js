@@ -27,7 +27,8 @@ router.post('/', function(req, res) {
     switch(intent){
         case "Abilities": output = pokemon+" has the Ability '"+data.abilities[0].ability.name+"'."; break;
         case "Height": output = pokemon+" is "+data.height+" feet tall."; break;
-        case "Index" || "Index mit Context": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
+        case "Index": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
+        case "Index mit Context": output = pokemon + "'s pokedex-index is " + data.id + "."; break;
         case "First Appearance": output = pokemon + " first appeared in version " + data.game_indices[data.game_indices.length-1].version.name + "."; break;
         case "Shiny": output = " this is what " + pokemon + " in shiny looks like. "; break;
         case "PokedexEntry": 
