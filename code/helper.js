@@ -24,9 +24,9 @@ module.exports =  {
         return request.onload();
     },
 
-    createGif: function(intent, data){
+    createGif: function(intent, data, uniID){
         var encoder = new GIFEncoder(400, 250);
-        encoder.createReadStream().pipe(fs.createWriteStream('./result/final.gif'));
+        encoder.createReadStream().pipe(fs.createWriteStream('./result/final'+uniID+'.gif'));
     
         encoder.start();
         encoder.setRepeat(0);   // 0 for repeat, -1 for no-repeat 

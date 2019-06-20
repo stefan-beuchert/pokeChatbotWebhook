@@ -2,6 +2,7 @@ var helper = require ('./code/helper');
 
 var express    = require('express');   
 var bodyParser = require('body-parser');
+var uuidv1 = require('uuid/v1');
 
 var app = express();
 
@@ -18,8 +19,9 @@ router.post('/', function(req, res) {
     var data = helper.getData(
         url = 'https://pokeapi.co/api/v2/pokemon/' + pokemon.charAt(0).toLowerCase() + pokemon.slice(1));
 
-    helper.createGif(intent, data);
-        var image = 'https://pokehook.azurewebsites.net/final.gif';
+    var uniID = uuidv1();
+    helper.createGif(intent, data, uniID);
+    var image = 'https://pokehook.azurewebsites.net/final'+uniID+'.gif';
 
     var output = '';
     switch(intent){
