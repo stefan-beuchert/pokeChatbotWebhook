@@ -81,7 +81,6 @@ module.exports =  {
                         },
                         {
                             "basicCard": {
-                                "title": pokemon,
                                 "formattedText": "Picture of a "+pokemon,
                                 "image": {
                                     "url": image,

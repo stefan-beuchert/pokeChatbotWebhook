@@ -15,10 +15,8 @@ var router = express.Router();              // get instance of express Router
 router.post('/', function(req, res) {
     var intent = req.body.queryResult.intent['displayName'];
     var pokemon = req.body.queryResult.parameters['pokemon'];
-    pokemon = pokemon.charAt(0).toLowerCase() + pokemon.slice(1);
-
     var data = helper.getData(
-        url = 'https://pokeapi.co/api/v2/pokemon/' + pokemon);
+        url = 'https://pokeapi.co/api/v2/pokemon/' + pokemon.charAt(0).toLowerCase() + pokemon.slice(1));
 
     helper.createGif(intent, data);
         var image = 'https://pokehook.azurewebsites.net/final.gif';
