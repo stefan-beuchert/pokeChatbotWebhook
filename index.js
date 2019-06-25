@@ -51,7 +51,7 @@ router.post('/', function(req, res) {
                 output = pokemon + " is an " + data.types[1].type.name + " and " + data.types[0].type.name + " type pokemon.";
             }
             else{
-                output = "wtf... according to the pokedex there is no type for " + pokemon + ".";
+                output = "According to the pokedex there is no type for " + pokemon + ".";
             }
         break;
         case "Succesful": 
@@ -68,7 +68,7 @@ router.post('/', function(req, res) {
                     var pos = output.lastIndexOf(',');
                     output = output.substring(0, pos) + ' and' + output.substring(pos+1);
                 } else {
-                    output = "wtf... " + pokemon + " gives no double damage to anybody";   
+                    output = pokemon + " gives no double damage to anybody";   
                 }
             } else if(data.types.length == 2){
                 var typedata_one = helper.getData(url = 'https://pokeapi.co/api/v2/type/' + data.types[0].type.name);
@@ -93,14 +93,14 @@ router.post('/', function(req, res) {
                     var no_response = true;
                 }
                 if (no_response == true){
-                    output = "wtf... " + pokemon + " gives no double damage to anybody";
+                    output = pokemon + " gives no double damage to anybody";
                 } else {
                     output = output.substr(0, output.length-2);
                     var pos = output.lastIndexOf(',');
                     output = output.substring(0, pos) + ' and' + output.substring(pos+1);
                 }
             } else {
-                output = "wtf... " + pokemon + " gives no double damage to anybody";
+                output = pokemon + " gives no double damage to anybody";
             }
             break;            
         default: output = "No Intent parsed"; break;
